@@ -16,7 +16,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "build": "tsc --p ./tsconfig-build.json && vite build",
-    "start": "vite"
+    "start": "vite",
+    "pretty": "npx prettier . --write"
   },
   "prepublishOnly": "npm run build",
   "peerDependencies": {
@@ -35,6 +36,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "glob": "^10.3.10",
+    "prettier": "3.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.2.2",

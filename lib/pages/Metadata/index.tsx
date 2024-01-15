@@ -1,11 +1,7 @@
-import { Box } from "@mui/material"
+import { Box } from "@mui/material";
 
-const Metadata = ()=>{
-    return(
-        <Box>
-            Metadata
-        </Box>
-    )
-}
+const Metadata = () => {
+  return <Box>Metadata</Box>;
+};
 
-export default Metadata
+export default Metadata;
