@@ -1,5 +1,8 @@
 
 import styles from './styles.module.css'
+import Home from '../pages/home'
+
+
 type Props={
     className?: string
 }
@@ -11,7 +14,7 @@ export const UploadForm = (props: Props)=> {
 
     return(
         <div className={`${className} ${styles.upload_form_container}`}>
-            UploadForm
+            <Home/>
         </div>
     )
   }
