@@ -1,7 +1,8 @@
 type Action = {
   type: string;
+
   payload?: {
-    source: string;
+    source?: string ;
   };
 };
 

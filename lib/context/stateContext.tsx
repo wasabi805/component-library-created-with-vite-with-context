@@ -37,7 +37,7 @@ type StateContextType = {
 };
 
 //   type CombineDispatch = ( dispatches : [ ()=>Action ] )=> unknown
-type CombineDispatch = (dispatches: Action[]) => unknown;
+//type CombineDispatch = (dispatches: Action[]) => unknown;
 
 /*---- COMPONENT---- */
 
@@ -74,5 +74,5 @@ export const StateProvider: FC<Props> = ({ children }) => {
 
 // Create a function that invokes the context
 export const useStateContext = () => {
-  return useContext<StateContextType>(StateContext);
+  return useContext(StateContext);
 };
