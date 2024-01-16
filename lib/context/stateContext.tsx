@@ -6,6 +6,8 @@ import React, {
   useReducer,
 } from "react";
 
+import { Action } from "../reducers/types";
+
 import {
   initialState as docsInitialState,
   docsReducer,
@@ -16,13 +18,8 @@ type Props = {
   children?: React.ReactNode;
 };
 
-type Action = {
-  type: string;
-  payload?: unknown;
-};
-
 type StateContextType = {
-  dispatch: () => void;
+  dispatch: () => Action;
 
   userState?: {
     id: number;
@@ -36,9 +33,7 @@ type StateContextType = {
   };
 };
 
-//   type CombineDispatch = ( dispatches : [ ()=>Action ] )=> unknown
-//type CombineDispatch = (dispatches: Action[]) => unknown;
-
+type Dispach = React.Dispatch< ()=> Action>
 /*---- COMPONENT---- */
 
 // Create a context to hold the state
@@ -52,16 +47,18 @@ export const StateProvider: FC<Props> = ({ children }) => {
 
   /**See for combinedState && combineDispatch :  https://stackoverflow.com/questions/59200785/react-usereducer-how-to-combine-multiple-reducers/61439698#61439698 */
   const combinedState = React.useMemo(() => ({ docsState }), [docsState]);
-  const combineDispatch =
-    (...dispatches) =>
+
+  const combineDispatch = ([...dispatches]) =>
     (action: Action) =>
       dispatches.forEach((dispatch) => dispatch(action));
 
-  const dispatch = useCallback(
-    combineDispatch(setDocsState),
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const dispatch = useCallback(combineDispatch([setDocsState , ]),
 
     [setDocsState],
   );
+
+  console.log('wat is this shape', dispatch)
 
   // In this return value, we passed-in children as the CONSUMER of the PROVIDER
   // This will able children components to access the data inside the context
